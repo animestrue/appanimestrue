@@ -11,7 +11,6 @@ class HomeScreen extends StatefulWidget {
 class _MyHomePageState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-
     return NavBar();
   }
 }
