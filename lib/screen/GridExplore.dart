@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:appanimestrue/model/Item.dart';
 import 'package:appanimestrue/screen/ItemList.dart';
-import 'package:appanimestrue/constant/Constant.dart';
 class GridExplore extends StatelessWidget {
   @override
 
@@ -17,10 +16,10 @@ class GridExplore extends StatelessWidget {
 
         title: const Text('Ultimos Episodios', style: TextStyle(color: Colors.white)),
         brightness: Brightness.dark,
-          backgroundColor: Colors.transparent,
-           )
+        backgroundColor: Colors.transparent,
+      )
       ,
-           body: _gridView(),
+      body: _gridView(),
     );
   }
 
@@ -39,29 +38,45 @@ class GridExplore extends StatelessWidget {
 }
 List<Item> _itemList() {
   return [
-  Item(
-    id: 0,
-    titulo: 'Terno Móvel Gundam',
-    anime: 'Mobile Suit Gundam',
-    imagem: 'https://i.imgur.com/plea1vD.jpg',
-  ),
+    Item(
+      id: 0,
+      titulo: 'Terno Móvel Gundam',
+      anime: 'Mobile Suit Gundam',
+      imagem: 'https://i.imgur.com/plea1vD.jpg',
+      url_leg: '6',
+      urlhd_leg: '6',
+      url_dub: '6',
+      urlhd_dub: '6',
+    ),
     Item(
       id: 1,
       titulo: 'Escolha',
       anime: 'Shoumetsu Toshi',
       imagem: 'https://i.imgur.com/E8Ojrj9.jpg',
+      url_leg: '6',
+      urlhd_leg: '6',
+      url_dub: '6',
+      urlhd_dub: '6',
     ),
     Item(
       id: 2,
       titulo: 'Pedras Rolando e Sete Cavaleiros',
       anime: 'Fairy Gone',
       imagem: 'https://i.imgur.com/yUyPvSh.jpg',
+      url_leg: '6',
+      urlhd_leg: '6',
+      url_dub: '6',
+      urlhd_dub: '6',
     ),
     Item(
       id: 3,
       titulo: 'A menina da escola secundária e os fantoches de sombra',
       anime: 'Joshi Kausei',
       imagem: 'https://i.imgur.com/VtEwdUp.jpg',
+      url_leg: '6',
+      urlhd_leg: '6',
+      url_dub: '6',
+      urlhd_dub: '6',
     ),
   ];
 }
