@@ -1,90 +1,85 @@
 import 'package:flutter/material.dart';
-import 'package:appanimestrue/model/Item.dart';
-import 'package:appanimestrue/screen/ItemList.dart';
-class GridExplore extends StatelessWidget {
-  @override
+import 'dart:convert';
+import 'package:appanimestrue/api.dart';
+import 'package:appanimestrue/model/UltimosEpisodios.dart';
 
-  List<Item> itemList;
+
+class GridExplore extends StatefulWidget {
+  @override
+  _GridExploreState createState() => _GridExploreState();
+
+}
+
+class _GridExploreState extends State<GridExplore> {
 
   @override
   Widget build(BuildContext context) {
-    itemList = _itemList();
-    return  Scaffold(
-      backgroundColor:Colors.red,
+
+    var futureBuilder =  FutureBuilder(
+        future: API().getData(),
+        builder: ((context, snapshot){
+
+
+          if (!snapshot.hasData){
+            return Center(
+              child: CircularProgressIndicator(),
+            );
+          }else{
+
+            return createListView(snapshot);
+          }
+
+        }
+        )
+    );
+
+    return new Scaffold(
+      backgroundColor: Colors.red,
       appBar: AppBar(
         elevation: 0.0,
-
-        title: const Text('Ultimos Episodios', style: TextStyle(color: Colors.white)),
+        title: const Text(
+            'Ultimos Episodios', style: TextStyle(color: Colors.white)),
         brightness: Brightness.dark,
         backgroundColor: Colors.transparent,
-      )
-      ,
-      body: _gridView(),
+      ),
+      body: futureBuilder,
     );
+
   }
 
-  Widget _gridView() {
+
+  Widget createListView(snapshot) {
+    List<UltimosEpisodios> videos = snapshot.data;
+
+
     return GridView.count(
-      crossAxisCount: 2,
-      padding: EdgeInsets.all(2.0),
-      childAspectRatio: 8.0 / 9.0,
-      children: itemList
-          .map(
-            (Item) => ItemList(item: Item),
-      ).toList(),
-    );
+        crossAxisCount: 2,
+        padding: EdgeInsets.all(2.0),
+        childAspectRatio: 8.0 / 9.0,
+        children: videos.map((map){
+
+          return  Card(
+            child: GridTile(
+              child:  Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Image.network(map.thumbnail, fit: BoxFit.cover),
+              ),
+              footer: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                    color: Colors.white,
+                    child: Text(map.anime)),
+              ),
+            ),
+          );
+
+
+        }).toList());
+
+
   }
 
-}
-List<Item> _itemList() {
-  return [
-    Item(
-      id: 0,
-      titulo: 'Terno Móvel Gundam',
-      anime: 'Mobile Suit Gundam',
-      imagem: 'https://i.imgur.com/plea1vD.jpg',
-      temporada: '1',
-      episodio: '9',
-      url_leg: '6',
-      urlhd_leg: '6',
-      url_dub: '6',
-      urlhd_dub: '6',
-    ),
-    Item(
-      id: 1,
-      titulo: 'Escolha',
-      anime: 'Shoumetsu Toshi',
-      imagem: 'https://i.imgur.com/E8Ojrj9.jpg',
-      temporada: '1',
-      episodio: '9',
-      url_leg: '6',
-      urlhd_leg: '6',
-      url_dub: '6',
-      urlhd_dub: '6',
-    ),
-    Item(
-      id: 2,
-      titulo: 'Pedras Rolando e Sete Cavaleiros',
-      anime: 'Fairy Gone',
-      imagem: 'https://i.imgur.com/yUyPvSh.jpg',
-      temporada: '1',
-      episodio: '9',
-      url_leg: '6',
-      urlhd_leg: '6',
-      url_dub: '6',
-      urlhd_dub: '6',
-    ),
-    Item(
-      id: 3,
-      titulo: 'A menina da escola secundária e os fantoches de sombra',
-      anime: 'Joshi Kausei',
-      imagem: 'https://i.imgur.com/VtEwdUp.jpg',
-      temporada: '1',
-      episodio: '9',
-      url_leg: '6',
-      urlhd_leg: '6',
-      url_dub: '6',
-      urlhd_dub: '6',
-    ),
-  ];
+
+
+
 }
