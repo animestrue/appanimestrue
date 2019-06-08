@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:appanimestrue/constant/Constant.dart';
 import 'package:appanimestrue/screen/SplashScreen.dart';
-import 'package:appanimestrue/curved_navigation_bar.dart';
 import 'package:appanimestrue/screen/HomeScreen.dart';
 import 'package:appanimestrue/screen/GridExplore.dart';
 
@@ -15,8 +14,8 @@ void main() => runApp(MaterialApp(
     canvasColor: Colors.yellow[900],
   ),
   routes: <String, WidgetBuilder>{
-    SPLASH_SCREEN: (BuildContext context) => SplashScreen(),
-    HOME_SCREEN: (BuildContext context) => HomeScreen(),
-    EXPLORER: (BuildContext context) => GridExplore(),
+    splash_screen: (BuildContext context) => SplashScreen(),
+    home_screen: (BuildContext context) => HomeScreen(),
+    explorer: (BuildContext context) => GridExplore(),
   },
 ));
