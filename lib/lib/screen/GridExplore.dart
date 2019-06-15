@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:appanimestrue/api.dart';
 import 'package:appanimestrue/model/UltimosEpisodios.dart';
 import 'package:appanimestrue/screen/ItemList.dart';
-
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 
 class GridExplore extends StatefulWidget {
@@ -37,12 +37,25 @@ class _GridExploreState extends State<GridExplore> {
 
   Widget createListView(snapshot) {
     List<UltimosEpisodios> videos = snapshot.data;
-       return GridView.count(
-        crossAxisCount: 2,
-        padding: EdgeInsets.only(top:2.0,bottom:5.0,right:2.0,left:2.0),
-        childAspectRatio: 8.0 / 11.2,
-        children:videos.map((UltimosEpisodios) => ItemList(id: UltimosEpisodios )).toList(),
-      );
+       return new Padding(
+           padding: const EdgeInsets.only(top: 12.0),
+           child: new StaggeredGridView.count(
+             crossAxisCount: 4,
+             staggeredTiles: const <StaggeredTile>[
+               const StaggeredTile.fit(4),
+               const StaggeredTile.fit(2),
+               const StaggeredTile.fit(2),
+               const StaggeredTile.fit(2),
+               const StaggeredTile.fit(2),
+               const StaggeredTile.fit(2),
+               const StaggeredTile.fit(2),
+             ],
+             children: videos.map((UltimosEpisodios) => ItemList(id: UltimosEpisodios )).toList(),
+             mainAxisSpacing: 4.0,
+             crossAxisSpacing: 4.0,
+             padding: const EdgeInsets.all(4.0),
+           ));
+
 
 
     }

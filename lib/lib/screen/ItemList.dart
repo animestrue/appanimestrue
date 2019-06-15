@@ -26,15 +26,15 @@ class ItemList extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             AspectRatio(
-              aspectRatio: 15.0 / 16,
+              aspectRatio: 21.0 / 12,
               child: Image.network(
                 id.thumbnail,
-                fit: BoxFit.fill,
+                fit: BoxFit.cover,
               ),
             ),
 
             new Padding(
-              padding: EdgeInsets.fromLTRB(4.0, 0.0, 4.0, 2.0),
+              padding: EdgeInsets.fromLTRB(4.0, 2.0, 4.0, 2.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
@@ -43,12 +43,12 @@ class ItemList extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                     maxLines: 1,
                     style: TextStyle(
-                      fontSize: 15.0,
-                      color: Color(0xFFD73C29),
+                      fontSize: 18.0,
+                      color: Colors.black,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  SizedBox(height: 0.0),
+                  SizedBox(height: 2.0),
                   Text(
                     id.anime,
                     overflow: TextOverflow.ellipsis,
@@ -78,7 +78,7 @@ class ItemList extends StatelessWidget {
 
                           ],
                         ),
-                      ),
+                      ),  SizedBox(height: 2.0),
 
                     ],
                   ),
