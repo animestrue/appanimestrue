@@ -1,3 +1,3 @@
-String SPLASH_SCREEN='SPLASH_SCREEN';
-String HOME_SCREEN='HOME_SCREEN';
-String EXPLORER='EXPLORER';
+String splash_screen='splash_screen';
+String home_screen='home_screen';
+String explorer='explorer';
