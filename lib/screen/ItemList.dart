@@ -1,55 +1,63 @@
 import 'package:flutter/material.dart';
-import 'package:appanimestrue/model/Item.dart';
+import 'package:appanimestrue/model/UltimosEpisodios.dart';
 import 'package:appanimestrue/screen/GridItemDetails.dart';
+import 'package:flutter/foundation.dart';
 
 
 class ItemList extends StatelessWidget {
-  final Item item;
-  const ItemList({@required this.item});
+  final UltimosEpisodios id;
+  const ItemList({@required this.id});
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () {
+    return  new InkWell(
+        onTap:  () =>{
         Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => GridItemDetails(this.item),
-          ),
-        );
-      },
-       child: Card(
+        context,
+        MaterialPageRoute(
+        builder: (context) => GridItemDetails(this.id),
+
+        ),
+
+        )
+            }
+
+      ,
+
+
+      child: Card(
         elevation: 1.0,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(3.0),
+          borderRadius: BorderRadius.circular(2.0),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             AspectRatio(
-              aspectRatio: 15.0 / 12.0,
+              aspectRatio: 21.0 / 14.9,
               child: Image.network(
-                item.imagem,
+                id.thumbnail,
                 fit: BoxFit.cover,
               ),
             ),
+
             new Padding(
-              padding: EdgeInsets.fromLTRB(4.0, 0.0, 4.0, 2.0),
+              padding: EdgeInsets.fromLTRB(4.0, 2.0, 4.0, 2.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Text(
-                    item.titulo,
+                    id.titulo,
                     overflow: TextOverflow.ellipsis,
                     maxLines: 1,
                     style: TextStyle(
-                      fontSize: 15.0,
-                      color: Color(0xFFD73C29),
+                      fontSize: 18.0,
+                      color: Colors.black,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  SizedBox(height: 0.0),
+                  SizedBox(height: 2.0),
                   Text(
-                    item.anime,
+                    id.anime,
                     overflow: TextOverflow.ellipsis,
                     maxLines: 1,
                     style: TextStyle(
@@ -58,7 +66,7 @@ class ItemList extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                       SizedBox(height: 2.0),
+                  SizedBox(height: 2.0),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
@@ -66,8 +74,7 @@ class ItemList extends StatelessWidget {
 
                         child: Column(
                           children: <Widget>[
-                            Text(
-                              '2 horas atrás',
+                            Text(id.data,
 
                               style: TextStyle(
                                 color: Colors.black38,
@@ -78,7 +85,7 @@ class ItemList extends StatelessWidget {
 
                           ],
                         ),
-                      ),
+                      ),  SizedBox(height: 2.0),
 
                     ],
                   ),

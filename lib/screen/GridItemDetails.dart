@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:appanimestrue/model/Item.dart';
+import 'package:appanimestrue/model/UltimosEpisodios.dart';
+
 import 'package:appanimestrue/screen/Player.dart';
 
+
 class GridItemDetails extends StatelessWidget {
-  final Item item;
+  final UltimosEpisodios item;
 
   GridItemDetails(this.item);
   @override
   Widget build(BuildContext context) {
+
+
     return Scaffold(
       primary: true,
       appBar: AppBar(
@@ -34,12 +38,12 @@ class GridItemDetails extends StatelessWidget {
               width: 80.0,
               height: 40.0,
               decoration: BoxDecoration(
-                color: Colors.red,
+                color: Colors.lightBlueAccent,
                 borderRadius: BorderRadius.circular(2.0),
               ),
               child: Center(
                 child: Text(
-                  'Todos Episodios',
+                  'Informações sobre o Anime',
                   style: TextStyle(
                     fontSize: 18.0,
                     color: Colors.white,
@@ -48,7 +52,7 @@ class GridItemDetails extends StatelessWidget {
                 ),
               ),
             ),
-          ),
+          )
 
         ],
         // ),
